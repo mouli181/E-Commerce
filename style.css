@@ -1,0 +1,661 @@
+nav {
+  background-color: #333;
+  padding: 1em;
+}
+.navbar {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+.navbar li {
+  display: inline-block;
+  position: relative;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 0.5em 1em;
+}
+.navbar a:hover {
+  color: #9e3500;
+}
+
+.dropdown .ellipsis {
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  right: 0;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #575757;
+}
+
+/* Show the dropdown menu when the ellipsis is hovered */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Rest of your styles (product cards, item containers) */
+.products-section {
+  background-color: rgb(15, 15, 15);
+}
+.add-to-cart-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #9e3500;
+}
+.cart-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.cart-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Cart button and modal styling */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.remove-item {
+  color: red;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.remove-item:hover {
+  color: darkred;
+}
+
+#cart-icon {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  position: relative;
+}
+
+#cart-icon .fa-shopping-cart {
+  margin-right: 10px;
+}
+
+#cart-icon::after {
+  content: attr(data-items);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.cart-btn {
+  background-color: #f0ad4e;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cart-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  margin-bottom: 10px;
+}
+
+.close-cart {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 2em;
+}
+
+.item-card {
+  height: 500px;
+  background-color: white;
+  width: 375px;
+  border-radius: 10px;
+  margin: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-name,
+.item-category,
+.item-price {
+  margin: 10px 0;
+}
+
+.item-image {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.item-name {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-left: 15px;
+  margin-top: 1em;
+  align-self: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300px;
+  height: 30px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.item-category {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-left: 15px;
+  margin-top: 0.5em;
+  align-self: flex-start;
+  cursor: pointer;
+  color: rgb(55, 55, 55);
+}
+.item-price {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-left: 15px;
+  margin-top: 0.5em;
+  align-self: flex-start;
+  cursor: pointer;
+}
+.item-card:hover {
+  color: #9e3500;
+  transition: ease-in-out 0.2s;
+}
+.img-1 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  background-position: center;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/98711f3d-7313-4bbc-ac91-6814407afb6a/tatum-1-basketball-shoes-98vPwk.png");
+}
+.img-1:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/d68d1a2a-9f98-483f-b847-ce3c4501d77a/tatum-1-basketball-shoes-98vPwk.png");
+}
+.img-2 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/367b8bf4-5f4b-4914-941e-aae922ce6d8c/air-jordan-1-low-og-white-red-mens-shoes-v0FbJt.png");
+}
+.img-2:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/89deaf20-fda8-4d28-82ed-5c727feedd95/air-jordan-1-low-og-white-red-mens-shoes-v0FbJt.png");
+}
+.img-3 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/288a2235-54ce-4f8e-a133-0117cbc381b4/air-jordan-1-mid-mens-shoes-X5pM09.png");
+}
+.img-3:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/739d1f29-df07-4c8c-b33f-dea08cd48bee/air-jordan-1-mid-mens-shoes-X5pM09.png");
+}
+.img-4 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6ede48e2-7cfa-4a17-8ccf-f0ae3f851a46/jumpman-mvp-mens-shoes-gzmjDz.png");
+}
+.img-4:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/632afcc5-6b53-4098-8f8e-32c6ad3e5d7f/jumpman-mvp-mens-shoes-gzmjDz.png");
+}
+.img-5 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url(" https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e7f621f8-d62e-481c-9ca5-66c961d055df/air-force-1-shadow-womens-shoes-kTgn9J.png");
+}
+.img-5:hover {
+  background-image: url(" https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1758744a-1251-47ff-99b0-abc7c95e4cc9/air-force-1-shadow-womens-shoes-kTgn9J.png");
+}
+.img-6 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url(" https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4579d014-3547-4364-a2c8-77253a6063fb/air-force-1-07-mens-shoes-HqN8PG.png");
+}
+.img-6:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/5f0fa94f-607b-4313-8385-eea12a6dc2ba/air-force-1-07-mens-shoes-HqN8PG.png");
+}
+.img-7 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f1f272c7-7c79-4fab-9d11-cdf96b67e0cf/court-legacy-next-nature-womens-shoes-8r07x0.png ");
+}
+.img-7:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/088df738-7c11-46a4-80b8-3a223222f95d/court-legacy-next-nature-womens-shoes-8r07x0.png");
+}
+.img-8 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url(" https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/806ccf97-9c17-43c3-9faa-f2eed708cbf3/free-metcon-5-premium-womens-workout-shoes-h4Zl5h.png");
+}
+.img-8:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/212cfb9d-d12b-46f1-8d41-5219f637059c/free-metcon-5-premium-womens-workout-shoes-h4Zl5h.png");
+}
+.img-9 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/14de6943-8c87-4b9b-9585-80dea96a70d3/air-max-97-mens-shoes-LJmK45.png ");
+}
+.img-9:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d623cebb-1782-4e4e-859a-cc60c854e036/air-max-97-mens-shoes-LJmK45.png");
+}
+.img-10 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/935473f8-7721-47ab-9fee-592231870b45/lunar-force-1-mens-duckboot-PXSmlg.png ");
+}
+.img-10:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/21b3cd1a-6615-47e5-bcb8-18567c376c63/lunar-force-1-mens-duckboot-PXSmlg.png");
+}
+.img-11 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/900033c1-92b7-4d0e-84f6-133ed52200d6/nikecourt-air-zoom-vapor-11-premium-womens-hard-court-tennis-shoes-5lVbnb.png ");
+}
+.img-11:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b7af690d-e745-4ebf-b770-2010a0fba58b/nikecourt-air-zoom-vapor-11-premium-womens-hard-court-tennis-shoes-5lVbnb.png");
+}
+.img-12 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/854577d8-58b3-48c0-b360-54e6a858911e/air-zoom-generation-mens-shoes-gkwN12.png ");
+}
+.img-12:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4a787d2f-a757-48e5-8cde-b4cbf2323bf9/air-zoom-generation-mens-shoes-gkwN12.png");
+}
+.img-13 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url(" https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/27043200-1653-43c6-83d1-3c5893eb0894/air-zoom-flight-95-mens-shoes-zc42bP.png");
+}
+.img-13:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/240ebbb9-ed73-46da-a6a0-df238a5f9988/air-zoom-flight-95-mens-shoes-zc42bP.png");
+}
+.img-14 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url(" https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e6c1cd02-e938-44f4-8550-8c44cf1cffc9/air-zoom-infinity-tour-nrg-mens-golf-shoes-ZGRpRp.png");
+}
+.img-14:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/18b4a070-b776-4217-89ef-4ba0da258e01/air-zoom-infinity-tour-nrg-mens-golf-shoes-ZGRpRp.png");
+}
+.img-15 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2f3ddd69-54d5-4cd4-87cd-132bb84acbf9/nikecourt-air-zoom-gp-turbo-osaka-womens-hard-court-tennis-shoes-ZdfLR2.png ");
+}
+.img-15:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/4e6de3db-31d5-440e-b8c2-ec4510badfbe/nikecourt-air-zoom-gp-turbo-osaka-womens-hard-court-tennis-shoes-ZdfLR2.png");
+}
+.img-16 {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  background-position: center;
+
+  margin-top: 10px;
+  background-size: 350px 450px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/493f87d4-86f9-4fc5-8c63-ceff5b81a643/air-max-pulse-roam-mens-shoes-X285L2.png ");
+}
+.img-16:hover {
+  background-image: url("https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/3939981f-e832-49cd-a92e-a8f59c6380c5/air-max-pulse-roam-mens-shoes-X285L2.png");
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 2em 0;
+  font-size: 0.9em;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+  margin: 0 1em;
+}
+
+.footer-left h3,
+.footer-center h3,
+.footer-right h3 {
+  color: #9e3500;
+}
+
+.footer-left p {
+  line-height: 1.6;
+}
+
+.footer-center ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-center ul li {
+  margin-bottom: 10px;
+}
+
+.footer-center ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-center ul li a:hover {
+  color: #9e3500;
+}
+
+.footer-right .social-icons img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s;
+}
+
+.footer-right .social-icons img:hover {
+  filter: brightness(0) invert(0.6);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1em;
+  border-top: 1px solid #444;
+  margin-top: 1em;
+  font-size: 0.85em;
+}
+.footer-right .social-icons a {
+  margin-right: 10px;
+  color: white;
+  font-size: 1.5em;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-right .social-icons a:hover {
+  color: #9e3500;
+}
+
+/* Media query for screens with a max-width of 768px (tablet and mobile devices) */
+@media only screen and (max-width: 768px) {
+  nav {
+    padding: 0.5em;
+  }
+
+  .navbar {
+    flex-direction: column; /* Stacks the items vertically */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar li {
+    display: block; /* Each link takes up a full row */
+    margin-bottom: 0.5em;
+  }
+
+  .navbar a {
+    font-size: 1em; /* Adjust text size for smaller screens */
+    padding: 0.5em 1em;
+  }
+
+  .dropdown-content {
+    right: auto; /* Align the dropdown to the left on smaller screens */
+    left: 0;
+  }
+
+  .item-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .item-card {
+    width: 100%; /* Make item cards full-width on smaller screens */
+    height: auto;
+  }
+
+  .item-image {
+    width: 100%; /* Adjust the image to fit the container */
+    height: auto;
+  }
+
+  #cart-icon {
+    font-size: 1.2em; /* Reduce cart icon size */
+  }
+
+  .cart-modal-content {
+    width: 90%;
+  }
+
+  .add-to-cart-btn {
+    font-size: 0.9em; /* Adjust button size */
+    padding: 8px 16px;
+  }
+}
+
+/* Media query for screens with a max-width of 480px (small mobile devices) */
+@media only screen and (max-width: 480px) {
+  nav {
+    padding: 0.5em;
+  }
+
+  .navbar a {
+    font-size: 0.9em; /* Reduce font size for very small screens */
+  }
+
+  .item-name {
+    font-size: 1.2em;
+  }
+
+  .item-category,
+  .item-price {
+    font-size: 1em;
+  }
+
+  .add-to-cart-btn {
+    font-size: 0.8em;
+    padding: 6px 12px;
+  }
+
+  #cart-icon {
+    font-size: 1em; /* Reduce cart icon size further */
+  }
+
+  .cart-modal-content {
+    width: 95%; /* Further reduce the cart modal width */
+  }
+}
